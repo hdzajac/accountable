@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>New Company</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/custom.css}"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">
+</div>
+<div class="content-wrapper">
+    <div class="form-wrapper col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <form th:action="@{/company}" th:object="${company}" method="post">
+            <div class="form-group">
+                <label for="company_name"> Company name: </label>
+                <input id="company_name" type="text" name="name"/>
+            </div>
+            <div class="form-group">
+                <label for="company_balance"> Worked hours: </label>
+                <input id="company_balance" type="number" step="0.1" name="balance" value="0"/>
+            </div>
+            <div>
+                <input class="button primary" type="submit" value="Save new company"/>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

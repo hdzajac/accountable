@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Header</title>
+</head>
+<body>
+            <div th:fragment="header">
+            <div class="navbar navbar-inverse navbar-fixed-top" >
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span class="navbar-brand" th:text="Accountable"></span>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a sec:authorize="isAuthenticated()" class="" th:classappend="${active == 'home'}? 'active' : null" href="/home">Summary</a></li>
+                            <li><a sec:authorize="isAuthenticated()" class="" th:classappend="${active == 'input'}? 'active' : null" href="/input">Add Work Time</a></li>
+                            <li><a sec:authorize="isAuthenticated()" class="" th:classappend="${active == 'company'}? 'active' : null" href="/company">Add Company</a></li>
+                            <li><a sec:authorize="isAnonymous()" th:if="${active == 'login'}" class=" active" href="/login">Log In</a></li>
+                            <li><a sec:authorize="isAnonymous()" th:if="${active == 'register'}" class=" active" href="/register">Register</a></li>
+                            <li>
+                                <form sec:authorize="isAuthenticated()" class="" th:action="@{/logout}" method="POST">
+                                    <input class="logout" type="submit" value="Logout"/>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/message :: message"></div>
+            </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>New Work</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/custom.css}"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">
+</div>
+<div class="content-wrapper">
+    <div th:unless="${#lists.isEmpty(companies)}" class="form-wrapper col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <form th:action="@{/input}" th:object="${input}" method="post">
+            <div class="form-group">
+                <label for="input_company" >Select Company</label>
+                <select id="input_company" class="form-control" th:field="*{company}">
+                    <option th:each="company : ${companies}"
+                            th:value="${{company}}"
+                            th:text="${company.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="input_balance"> Worked hours: </label>
+                <input id="input_balance" type="number" step="0.1" name="workingTime" value="0"/>
+            </div>
+            <div>
+                <input class="button primary" type="submit" value="Save worked hours"/>
+            </div>
+        </form>
+    </div>
+    <div th:if="${#lists.isEmpty(companies)}">
+        You haven't added any companies to track the time for. Go to Add Company tab to add a company and start tracking time.
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

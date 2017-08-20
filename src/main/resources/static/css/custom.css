@@ -1,0 +1,149 @@
+body {
+    background-color: #c8c8c8;
+    font-family: Lato;
+    font-weight: 700;
+}
+
+a{
+    color: #003aff;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: black;
+    font-size: 18px;
+}
+.navbar-inverse .navbar-nav>li>form {
+    padding-top: 15px;
+    color: black;
+    font-size: 18px;
+}
+
+.navbar-inverse .navbar-brand:hover{
+    color: black;
+}
+
+.navbar-inverse .navbar-nav>li>a.active {
+    border-bottom: 2px solid #003aff;
+    color: #003aff;
+}
+
+.logout:hover,
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #003aff;
+}
+
+
+.content-wrapper{
+    margin-top: 75px;
+}
+
+.messages-wrapper {
+    margin-top: 75px;
+}
+
+.navbar-header > .navbar-brand{
+    color:black;
+    font-size: 25px;
+}
+
+.navbar{
+    background-color: #c8c8c8;
+    border: none;
+}
+
+.navbar-brand.active {
+    background-color: transparent;
+    color: #00b716;
+    font-size: 22px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.button.primary {
+    background-color: white;
+    border: 2px solid #003aff;
+    padding: 5px 15px;
+    color: #003aff;
+    margin-bottom: 10px;
+}
+
+.company-wrapper,
+.form-wrapper{
+    padding: 15px;
+    margin-bottom: 30px;
+    background: white;
+    box-shadow: 10px 10px #F3AF00;
+}
+
+.company-wrapper:hover {
+    padding-bottom: 11px;
+    box-shadow: 15px 15px #003aff;
+    padding-top: 11px;
+}
+
+.company{
+    margin: 15px;
+}
+
+.record{
+margin-bottom: 30px;
+border-bottom: 2px solid black;
+}
+
+.company-wrapper:hover > .company > .record{
+    border-bottom: 2px solid #003aff;
+    font-size: 13pt;
+}
+
+.record:last-child{
+    margin-bottom: 20px;
+}
+
+.form-control{
+    height: inherit;
+    border: 1px solid #000;
+     border-radius: 0;
+     -webkit-box-shadow: none;
+     box-shadow: none;
+
+}
+
+
+.logout{
+    background-color: transparent;
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    border: none;
+    color: black;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: -15px;
+}
+
+.alert-danger {
+    color: #ff0029;
+    background-color: white;
+    border-radius: 0;
+    border: 2px solid #ff0029;
+}
+
+.alert-info {
+    color: #003AFF;
+    background-color: white;
+    border-radius: 0;
+    border: 2px solid #003AFF;
+}
+
+.alert-success {
+    color: #00b716;
+    background-color: white;
+    border-radius: 0;
+    border: 2px solid #00b716;
+}

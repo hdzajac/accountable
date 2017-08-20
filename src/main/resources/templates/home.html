@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Summary</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/custom.css}"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">
+</div>
+<div class="content-wrapper col-md-12">
+    <div class="col-md-4" th:unless="${#lists.isEmpty(companySet)}" th:each="company : ${companySet}">
+        <div class="company-wrapper">
+            <div class="company">
+                <label>Company</label>
+                <div class="record" th:text="${company.name}"></div>
+                <label>Worked hours</label>
+                <div class="record" th:text="${company.balance}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
