@@ -2,6 +2,7 @@ package com.accountable.app.controllers;
 
 import com.accountable.app.entities.Company;
 import com.accountable.app.entities.Input;
+import com.accountable.app.entities.User;
 import com.accountable.app.services.CompanyService;
 import com.accountable.app.services.InputService;
 import com.accountable.app.services.UserService;
@@ -75,13 +76,15 @@ public class InputsController {
         }
         else {
             Company currentCompany = input.getCompany();
+            String username = principal.getName();
 
             LocalDateTime dateTime = LocalDateTime.now();
             input.setInputDate(dateTime);
 
             currentCompany.setBalance(currentCompany.getBalance() + input.getWorkingTime());
             companyService.save(currentCompany);
-            Set<Company> companies = companyService.getCompaniesForUsername(principal.getName());
+            Set<Company> companies = companyService.getCompaniesForUsername(username);
+            input.setUser(userService.findByUsername(username));
             inputService.saveInput(input);
             modelAndView.addObject("companies", companies);
 
