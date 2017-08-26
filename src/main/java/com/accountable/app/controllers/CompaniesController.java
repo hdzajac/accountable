@@ -37,11 +37,14 @@ public class CompaniesController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("active", "company");
         Set<Company> companySet = companyService.getCompaniesForUsername(principal.getName());
+
         if (companySet.isEmpty()) {
             modelAndView.addObject("first", true);
-        } else {
+        }
+        else {
             modelAndView.addObject("companySet", companySet);
         }
+
         modelAndView.setViewName("company");
         return modelAndView;
     }
@@ -52,28 +55,23 @@ public class CompaniesController {
         modelAndView.addObject("active", "company");
 
         Set<Company> companies = companyService.getCompaniesForUsername(principal.getName());
+        Set<Message> messages = new HashSet<Message>();
+        Message message;
 
         for(Company c: companies){
             if(c.getName().toLowerCase().equals(company.getName().toLowerCase())) {
-                Set<Message> messages = new HashSet<Message>();
-                Message message = new ErrorMessage();
+                message = new ErrorMessage();
                 message.setContent("Company already exists.");
                 modelAndView.setViewName("/company");
-                messages.add(message);
-                modelAndView.addObject("messages", messages);
-                return modelAndView;
             }
         }
 
         if(bindingResult.hasErrors()){
-            Set<Message> messages = new HashSet<Message>();
-            Message message = new ErrorMessage();
+            message = new ErrorMessage();
             message.setContent("Error while receiving form, please try again.");
             modelAndView.setViewName("/company");
-            messages.add(message);
-            modelAndView.addObject("messages", messages);
-            return modelAndView;
         }
+
         else{
             User user = userService.findByUsername(principal.getName());
             company.setUser(user);
@@ -82,14 +80,12 @@ public class CompaniesController {
             modelAndView.addObject("companySet", companies);
             modelAndView.setViewName("company");
 
-            Set<Message> messages = new HashSet<Message>();
-            Message message = new SuccessMessage();
+            message = new SuccessMessage();
             message.setContent(String.format("Company: %s was added successfully!", company.getName()));
-            messages.add(message);
-            modelAndView.addObject("messages", messages);
-
-            return modelAndView;
         }
 
+        messages.add(message);
+        modelAndView.addObject("messages", messages);
+        return modelAndView;
     }
 }

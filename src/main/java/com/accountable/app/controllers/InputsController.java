@@ -65,7 +65,7 @@ public class InputsController {
     }
 
     @RequestMapping(value = "/input", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid Input input, BindingResult bindingResult, Principal principal) {
+    public ModelAndView createNewInput(@Valid Input input, BindingResult bindingResult, Principal principal) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("active", "input");
 
